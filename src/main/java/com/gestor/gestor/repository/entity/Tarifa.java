@@ -2,6 +2,7 @@ package com.gestor.gestor.repository.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "COMGES_SERVICIO_TARIFAS")
@@ -24,4 +25,7 @@ public class Tarifa {
     private LocalDateTime fecha_alta;
     @Column(name = "NEGOCIO")
     private String negocio;
+
+    @OneToMany(mappedBy = "tarifa")
+    private List<Tarifa> tarifaList;
 }

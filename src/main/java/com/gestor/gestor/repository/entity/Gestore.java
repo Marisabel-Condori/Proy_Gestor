@@ -3,6 +3,7 @@ package com.gestor.gestor.repository.entity;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "COMGES_GESTORES")
@@ -23,4 +24,7 @@ public class Gestore {
     private String regional;
     @Column(name = "DEPARTAMENTO")
     private String departamento;
+
+    @OneToMany(mappedBy = "gestore")
+    private List<Alta> altaList;
 }

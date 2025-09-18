@@ -14,12 +14,6 @@ public class Alta {
     @Column(name = "PERIODO", length = 6)
     private String periodo;
 
-    @Column(name = "ID_GESTOR")
-    private Long idGestor;
-
-    @Column(name = "ID_SERVICIO_TARIFA", length = 50)
-    private String idServicioTarifa;
-
     @Column(name = "NRO_SOLICITUD", length = 20)
     private String nroSolicitud;
 
@@ -60,6 +54,11 @@ public class Alta {
     private String componenteArqv;
 
 
+    @ManyToOne
+    @JoinColumn(name = "ID_GESTOR", referencedColumnName = "ID_GESTOR")
+    private Gestore gestore;
 
-
+    @ManyToOne
+    @JoinColumn(name = "ID_SERVICIO_TARIFA", referencedColumnName = "ID_SERVICIO_TARIFA")
+    private Tarifa tarifa;
 }
