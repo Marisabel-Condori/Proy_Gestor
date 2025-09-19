@@ -3,7 +3,13 @@ package com.gestor.gestor.repository.entity;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "COMGES_ALTA_SERVICIO")
 public class Alta {
