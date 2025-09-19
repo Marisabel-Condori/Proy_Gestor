@@ -20,4 +20,6 @@ public class AdelantoController {
     public List<AdelantoDTO> obtenerListaAdelanto(){
         return this.adelantoService.obtenerListaAdelanto();
     }
+
+    
 }
