@@ -14,25 +14,35 @@ import java.util.List;
 @Entity
 @Table(name = "COMGES_GESTORES")
 public class Gestore {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idGestore;
+
     @Column(name = "ID_GESTOR")
     private Long id;
-    @Column(name = "NOMBRE_COMPLETO")
+
+    @Column(name = "NOMBRE_COMPLETO", length = 100)
     private String nombreCompleto;
+
     @Column(name = "ID_CLIENTE")
     private Long idCliente;
+
     @Column(name = "FECHA_ALTA")
-    private LocalDateTime fechaAlta;
+    private String fechaAlta;
+
     @Column(name = "FECHA_BAJA")
-    private LocalDateTime fechaBaja;
+    private String fechaBaja;
+
     @Column(name = "FECHA_BAJA_REPORTE")
-    private LocalDateTime fechaBajaReporte;
-    @Column(name = "REGIONAL")
+    private String fechaBajaReporte;
+
+    @Column(name = "REGIONAL", length = 50)
     private String regional;
-    @Column(name = "DEPARTAMENTO")
+
+    @Column(name = "DEPARTAMENTO", length = 10)
     private String departamento;
 
-    @OneToMany(mappedBy = "gestore")
+    @OneToMany(mappedBy = "gestore", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Alta> altaList;
 }

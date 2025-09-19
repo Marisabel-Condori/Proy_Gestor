@@ -1,7 +1,5 @@
 package com.gestor.gestor.repository.entity;
 
-import java.time.LocalDateTime;
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +11,11 @@ import lombok.Setter;
 @Entity
 @Table(name = "COMGES_ALTA_SERVICIO")
 public class Alta {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idAlta;
+
     @Column(name = "ID_ALTA_SERVICIO")
     private Long idAltaServicio;
 
@@ -24,10 +26,10 @@ public class Alta {
     private String nroSolicitud;
 
     @Column(name = "FECHA_ALTA_INS")
-    private LocalDateTime fechaAltaIns;
+    private String fechaAltaIns;
 
     @Column(name = "FECHA_INSTALACION_INS")
-    private LocalDateTime fechaInstalacionIns;
+    private String fechaInstalacionIns;
 
     @Column(name = "INSTANCIA_FTT", length = 20)
     private String instanciaFtt;
@@ -50,7 +52,7 @@ public class Alta {
     @Column(name = "NOMBRE_CLIENTE", length = 100)
     private String nombreCliente;
 
-    @Column(name = "MEDIO_CONTACTO", length = 50)
+    @Column(name = "MEDIO_CONTACTO", length = 100)
     private String medioContacto;
 
     @Column(name = "PAQUETE_ARQV", length = 20)
@@ -59,6 +61,14 @@ public class Alta {
     @Column(name = "COMPONENTE_ARQV", length = 20)
     private String componenteArqv;
 
+    @Column(name = "LIMITE_CONSUMO_ARQV")
+    private Integer limiteConsumoArqv;
+
+    @Column(name = "COMISIONA")
+    private String comisiona;
+
+    @Column(name = "FLAG_DWH")
+    private String flag_dwh;
 
     @ManyToOne
     @JoinColumn(name = "ID_GESTOR", referencedColumnName = "ID_GESTOR")

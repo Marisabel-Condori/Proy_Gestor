@@ -15,8 +15,10 @@ import java.util.List;
 public class Tarifa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idTarifa;
+
     @Column(name = "ID_SERVICIO_TARIFA")
-    private Long id_tarifa;
+    private String id_servicio_tarifa;
     @Column(name = "DESCRIPCION")
     private String descripcion;
     @Column(name = "COMBO_PLAY")
@@ -28,7 +30,7 @@ public class Tarifa {
     @Column(name = "TARIFA")
     private long tarifa ;
     @Column(name = "FECHA_ALTA")
-    private LocalDateTime fecha_alta;
+    private String fecha_alta;
     @Column(name = "NEGOCIO")
     private String negocio;
 
