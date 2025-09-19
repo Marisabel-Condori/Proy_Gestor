@@ -20,6 +20,8 @@ public class Gestore {
     private LocalDateTime fechaAlta;
     @Column(name = "FECHA_BAJA")
     private LocalDateTime fechaBaja;
+    @Column(name = "FECHA_BAJA_REPORTE")
+    private LocalDateTime fechaBajaReporte;
     @Column(name = "REGIONAL")
     private String regional;
     @Column(name = "DEPARTAMENTO")
