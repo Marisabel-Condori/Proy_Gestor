@@ -18,7 +18,15 @@ public class AdelantoController {
     
     @GetMapping()
     public List<AdelantoDTO> obtenerListaAdelanto(){
-        List<Adelanto> adelantos = this.adelantoService.obtenerListaAdelanto();
-        return null;
+        return this.adelantoService.obtenerListaAdelanto()
+            .stream().map(adelanto -> {
+            AdelantoDTO adelantoDTO = new AdelantoDTO();
+            adelantoDTO.setCantidad(adelanto.getCantidad());
+            adelantoDTO.setComisionNueva(adelanto.getComisionNueva());
+            adelantoDTO.setMonto(adelanto.getMonto());
+            adelantoDTO.setPenalizacion(adelanto.getPenalizacion());
+            adelantoDTO.setRegional(adelanto.getRegional());
+            return adelantoDTO;
+        }).toList();
     }
 }
