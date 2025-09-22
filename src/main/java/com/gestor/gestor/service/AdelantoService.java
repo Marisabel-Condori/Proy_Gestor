@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -15,10 +16,14 @@ public class AdelantoService {
 
     public List<Adelanto> obtenerListaAdelanto() {
 
-        LocalDateTime fechaInicio = LocalDateTime.of(2025, 6, 1, 0, 0);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/mm/yyyy");
+
+        String fechaInicio = "7/8/2024";
+        
         LocalDateTime fechaFin = LocalDateTime.of(2025, 7, 1, 0, 0);
 
-        List<Object[]> resultados = this.gestoreRepository.consultaReporte(fechaInicio, fechaFin);
+        List<Object[]> resultados = this.gestoreRepository.consultaReporte(fechaInicio, fechaFin.format(formatter));
+        //List<Object[]> resultados = this.gestoreRepository.consultaReporte(fechaInicio, fechaFin.format(formatter));
         return resultados.stream()
                 .map(this::mapToAdelanto)
                 .toList();

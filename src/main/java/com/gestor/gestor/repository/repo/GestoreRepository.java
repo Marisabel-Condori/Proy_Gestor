@@ -25,14 +25,13 @@ public interface GestoreRepository extends JpaRepository<Gestore, Long> {
         WHERE
             TAR.TARIFA > 0
             AND GES.ID_CLIENTE NOT IN ('1000','171311487','171064362')
-            AND ALT.FECHA_INSTALACION_INS >= :fechaInicio
-            AND ALT.FECHA_INSTALACION_INS < :fechaFin
+            AND ALT.FECHA_INSTALACION_INS LIKE CONCAT('%', :fechaInicio, '%')
             AND GES.FECHA_BAJA IS NULL
         GROUP BY GES.REGIONAL
         ORDER BY GES.REGIONAL
         """, nativeQuery = true)
     List<Object[]> consultaReporte(
-            @Param("fechaInicio") LocalDateTime fechaInicio,
-            @Param("fechaFin") LocalDateTime fechaFin
+            @Param("fechaInicio") String fechaInicio,
+            @Param("fechaFin") String fechaFin
     );
 }
