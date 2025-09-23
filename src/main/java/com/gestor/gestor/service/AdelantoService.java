@@ -15,15 +15,12 @@ public class AdelantoService {
     private GestoreRepository gestoreRepository;
 
     public List<Adelanto> obtenerListaAdelanto() {
+        //String fechaInicio = "7/8/2024";
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/mm/yyyy");
+        LocalDateTime fecha = LocalDateTime.of(2024, 8, 7, 0, 0);
 
-        String fechaInicio = "7/8/2024";
-        
-        LocalDateTime fechaFin = LocalDateTime.of(2025, 7, 1, 0, 0);
-
-        List<Object[]> resultados = this.gestoreRepository.consultaReporte(fechaInicio, fechaFin.format(formatter));
-        //List<Object[]> resultados = this.gestoreRepository.consultaReporte(fechaInicio, fechaFin.format(formatter));
+        List<Object[]> resultados = this.gestoreRepository.consultaReporte(fecha.format(formatter));
         return resultados.stream()
                 .map(this::mapToAdelanto)
                 .toList();
