@@ -6,7 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @RequestMapping
@@ -25,13 +24,10 @@ public interface GestoreRepository extends JpaRepository<Gestore, Long> {
         WHERE
             TAR.TARIFA > 0
             AND GES.ID_CLIENTE NOT IN ('1000','171311487','171064362')
-            AND ALT.FECHA_INSTALACION_INS LIKE CONCAT('%', :fechaInicio, '%')
+            AND ALT.FECHA_INSTALACION_INS LIKE CONCAT('%', :fecha, '%')
             AND GES.FECHA_BAJA IS NULL
         GROUP BY GES.REGIONAL
         ORDER BY GES.REGIONAL
         """, nativeQuery = true)
-    List<Object[]> consultaReporte(
-            @Param("fechaInicio") String fechaInicio,
-            @Param("fechaFin") String fechaFin
-    );
+    List<Object[]> consultaReporte(@Param("fecha") String fecha);
 }
