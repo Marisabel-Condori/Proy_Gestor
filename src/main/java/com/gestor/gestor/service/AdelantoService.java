@@ -4,6 +4,7 @@ import com.gestor.gestor.repository.repo.GestoreRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -17,8 +18,8 @@ public class AdelantoService {
     public List<Adelanto> obtenerListaAdelanto() {
         //String fechaInicio = "7/8/2024";
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/mm/yyyy");
-        LocalDateTime fecha = LocalDateTime.of(2024, 8, 7, 0, 0);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/M/yyyy");
+        LocalDate fecha = LocalDate.of(2024, 8, 7);
 
         List<Object[]> resultados = this.gestoreRepository.consultaReporte(fecha.format(formatter));
         return resultados.stream()
