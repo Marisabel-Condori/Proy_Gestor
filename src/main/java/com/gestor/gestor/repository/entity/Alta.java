@@ -1,5 +1,7 @@
 package com.gestor.gestor.repository.entity;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,10 +28,10 @@ public class Alta {
     private String nroSolicitud;
 
     @Column(name = "FECHA_ALTA_INS")
-    private String fechaAltaIns;
+    private LocalDateTime fechaAltaIns;
 
     @Column(name = "FECHA_INSTALACION_INS")
-    private String fechaInstalacionIns;
+    private LocalDateTime fechaInstalacionIns;
 
     @Column(name = "INSTANCIA_FTT", length = 20)
     private String instanciaFtt;

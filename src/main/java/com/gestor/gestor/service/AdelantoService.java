@@ -23,7 +23,6 @@ public class AdelantoService {
         LocalDateTime fechaFin = LocalDateTime.of(2025, 7, 1, 0, 0);
 
         List<Object[]> resultados = this.gestoreRepository.consultaReporte(fechaInicio, fechaFin.format(formatter));
-        //List<Object[]> resultados = this.gestoreRepository.consultaReporte(fechaInicio, fechaFin.format(formatter));
         return resultados.stream()
                 .map(this::mapToAdelanto)
                 .toList();
